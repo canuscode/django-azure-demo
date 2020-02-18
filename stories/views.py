@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from . models import Stories
 
 
 def homepage(request):
-    return HttpResponse('Hello from Stories homepage')
+    stories = Stories.objects.all()
+    return render(request, 'stories/homepage.html', {'stories': stories})
